@@ -1,4 +1,4 @@
-import {TypeOrmModuleOptions} from '@nestjs/typeorm';
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as process from 'process';
 
 export class DatabaseConfig {
@@ -9,8 +9,9 @@ export class DatabaseConfig {
       port: Number(process.env.POSTGRES_PORT),
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DATABASE,
+      database: process.env.POSTGRES_DB,
       synchronize: Boolean(process.env.POSTGRES_AUTO_SYNC_ENTITY),
+      ssl: true,
     } as TypeOrmModuleOptions;
   }
 }

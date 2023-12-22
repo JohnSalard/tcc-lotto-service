@@ -1,23 +1,22 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
-import {BaseEntity} from "./base.entity";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({name: 'Prize'})
-export class PrizeEntity extends BaseEntity {
-    @PrimaryGeneratedColumn('increment')
-    id: number;
+@Entity({ name: 'prizes' })
+export class PrizeEntity {
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
-    @Column('int')
-    periodNo: number;
+  @Column()
+  oneDigit: string;
 
-    @Column({type: "time without time zone",})
-    periodDate: Date
+  @Column()
+  twoDigit: string;
 
-    @Column('varchar')
-    lottoNo: string
+  @Column()
+  threeDigit: string;
 
-    @Column('int')
-    digit: number
+  @Column()
+  label: string;
 
-    @Column('int')
-    prizeId: number
+  @Column({ type: 'timestamp with time zone', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
 }

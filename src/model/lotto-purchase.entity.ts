@@ -1,38 +1,31 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
-import {BaseEntity} from "./base.entity";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({name: 'LottoPurchase'})
-export class LottoPurchaseEntity extends BaseEntity {
-    @PrimaryGeneratedColumn('increment')
-    id: number
+@Entity({ name: 'lotto-purchase' })
+export class LottoPurchaseEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: number;
 
-    @Column('int')
-    periodNo: number;
+  @Column('int')
+  prizeId: number;
 
-    @Column('varchar')
-    lottoNo: string;
+  @Column({ nullable: true })
+  oneDigit: string;
 
-    @Column('int')
-    digit: number
+  @Column({ nullable: true })
+  twoDigit: string;
 
-    @Column('decimal')
-    creditAmount: number
+  @Column({ nullable: true })
+  threeDigit: string;
 
-    @Column({type: "time without time zone", default: () => 'CURRENT_TIMESTAMP'})
-    purchaseDate: Date
+  @Column({ nullable: true })
+  oneDigitAmount: string;
 
-    @Column('uuid')
-    userId: string
+  @Column({ nullable: true })
+  twoDigitAmount: string;
 
-    @Column('int')
-    prizeId: number
+  @Column({ nullable: true })
+  threeDigitAmount: string;
 
-    @Column('decimal')
-    prizeAmount: number
-
-    @Column('int')
-    transactionId: number
-
-    @Column('varchar')
-    status: string
+  @Column()
+  userId: string;
 }

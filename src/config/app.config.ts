@@ -1,15 +1,5 @@
-import * as process from 'process';
+import * as dotenv from 'dotenv';
+import { registerAs } from '@nestjs/config';
+dotenv.config();
 
-export class AppConfig {
-  static getStage(): string {
-    return process.env.STAGE;
-  }
-
-  static getPort(): string {
-    return process.env.PORT;
-  }
-
-  static getBaseUrl(): string {
-    return String(process.env.BASE_URL);
-  }
-}
+export default registerAs('app', () => ({}));
